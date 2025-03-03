@@ -30,7 +30,7 @@ const options = {
         titleColor: '#fff',
         messageColor: '#fff',
         backgroundColor: ' #ef4040',
-        iconUrl: '../img/task_2/Error.png',
+        iconUrl: '/img/task_2/Error.png',
         message: 'Please choose a date in the future',
         position: 'topRight',
       });

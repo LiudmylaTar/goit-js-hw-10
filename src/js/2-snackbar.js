@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     iconColor: '#fff',
     close: true,
     closeColor: '#fff',
-    iconUrl: '../img/task_2/Inform.png',
+    iconUrl: './img/task_2/Inform.png',
     message: 'Welcome!',
     position: 'topRight',
   });
@@ -35,7 +35,7 @@ form.addEventListener('submit', event => {
       messageColor: '#fff',
       backgroundColor: '#ffa000',
       message: 'You forgot important data',
-      iconUrl: '../img/task_2/Caution.png',
+      iconUrl: './img/task_2/Caution.png',
       position: 'topRight',
     });
     return;
@@ -58,7 +58,7 @@ form.addEventListener('submit', event => {
         titleColor: '#fff',
         messageColor: '#fff',
         backgroundColor: '59A10D',
-        iconUrl: '../img/task_2/Ok.png',
+        iconUrl: './img/task_2/Ok.png',
         message,
         position: 'topRight',
       });
@@ -69,7 +69,7 @@ form.addEventListener('submit', event => {
         titleColor: '#fff',
         messageColor: '#fff',
         backgroundColor: ' #ef4040',
-        iconUrl: '../img/task_2/Error.png',
+        iconUrl: './img/task_2/Error.png',
         message,
         position: 'topRight',
       });
