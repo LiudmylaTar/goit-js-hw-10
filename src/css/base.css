@@ -30,3 +30,20 @@ main {
 main:has(.back-link) {
   text-align: center;
 }
+
+.main-list {
+  margin-top: 24px;
+}
+.main-link {
+  transition: 200ms ease-in;
+}
+.main-link:hover,
+.main-link:focus {
+  color: #747bff;
+}
+.main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
