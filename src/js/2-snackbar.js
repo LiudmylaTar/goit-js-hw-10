@@ -3,7 +3,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 import errorIcon from '../img/task_2/Error.png';
 import helloIcon from '../img/task_2/Inform.png';
-import cautionIcon from '../img/task_2/Caution.png';
+import cautionIcon from '../img/task_2/Inform.png';
 import okIcon from '../img/task_2/Ok.png';
 
 const form = document.querySelector('.form');
