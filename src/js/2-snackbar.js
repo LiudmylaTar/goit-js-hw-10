@@ -1,6 +1,11 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
+import errorIcon from '../img/task_2/Error.png';
+import helloIcon from '../img/task_2/Inform.png';
+import cautionIcon from '../img/task_2/Caution.png';
+import okIcon from '../img/task_2/Ok.png';
+
 const form = document.querySelector('.form');
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     iconColor: '#fff',
     close: true,
     closeColor: '#fff',
-    iconUrl: './img/task_2/Inform.png',
+    iconUrl: helloIcon,
     message: 'Welcome!',
     position: 'topRight',
   });
@@ -21,21 +26,22 @@ document.addEventListener('DOMContentLoaded', () => {
 form.addEventListener('submit', event => {
   event.preventDefault();
 
-  const delay = document.querySelector('input[name="delay"]');
+  const delayInput = document.querySelector('input[name="delay"]');
   const state = document.querySelector('input[name="state"]:checked')?.value;
+  const delay = Number(delayInput.value);
 
   console.log('Delay:', delay); // Для перевірки
   console.log('State:', state); // Перевіряємо, чи вибраний state
 
   // Перевірка, чи всі дані введено
-  if (!delay || !state) {
+  if (!delay || isNaN(delay) || !state) {
     iziToast.show({
       title: 'Caution',
       titleColor: '#fff',
       messageColor: '#fff',
       backgroundColor: '#ffa000',
       message: 'You forgot important data',
-      iconUrl: './img/task_2/Caution.png',
+      iconUrl: cautionIcon,
       position: 'topRight',
     });
     return;
@@ -45,32 +51,34 @@ form.addEventListener('submit', event => {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (state === 'fulfilled') {
-        resolve(`✅ Fulfilled promise in ${delay}ms`);
+        resolve(delay);
       } else {
-        reject(`❌ Rejected promise in ${delay}ms`);
+        reject(delay);
       }
     }, Number(delay));
   });
   promise
     .then(message => {
+      console.log(`✅ Fulfilled promise in ${delay}ms`);
       iziToast.success({
         title: 'OK',
         titleColor: '#fff',
         messageColor: '#fff',
         backgroundColor: '59A10D',
-        iconUrl: './img/task_2/Ok.png',
-        message,
+        iconUrl: okIcon,
+        message: `✅ Fulfilled promise in ${delay}ms`,
         position: 'topRight',
       });
     })
     .catch(message => {
+      console.log(`❌ Rejected promise in ${delay}ms`);
       iziToast.error({
         title: 'Error',
         titleColor: '#fff',
         messageColor: '#fff',
         backgroundColor: ' #ef4040',
-        iconUrl: './img/task_2/Error.png',
-        message,
+        iconUrl: errorIcon,
+        message: `❌ Rejected promise in ${delay}ms`,
         position: 'topRight',
       });
     });

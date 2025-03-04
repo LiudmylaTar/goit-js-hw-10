@@ -3,6 +3,7 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import errorIcon from '../img/task_2/Error.png';
 
 const startButton = document.querySelector('[data-start]');
 const dateInput = document.querySelector('#datetime-picker');
@@ -30,7 +31,7 @@ const options = {
         titleColor: '#fff',
         messageColor: '#fff',
         backgroundColor: ' #ef4040',
-        iconUrl: '/img/task_2/Error.png',
+        iconUrl: errorIcon,
         message: 'Please choose a date in the future',
         position: 'topRight',
       });
@@ -55,8 +56,7 @@ startButton.addEventListener('click', () => {
 
     if (timeLeft <= 0) {
       clearInterval(countdownInterval);
-      startButton.disabled = false; // Після завершення таймера кнопка знову активна
-      dateInput.disabled = false; // Інпут також стає активним
+      resetTimer();
       return;
     }
 
@@ -82,4 +82,14 @@ function convertMs(ms) {
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
   return { days, hours, minutes, seconds };
+}
+
+function resetTimer() {
+  fildDay.textContent = '00';
+  fildHour.textContent = '00';
+  fildMinute.textContent = '00';
+  fildSecond.textContent = '00';
+  dateInput.disabled = false; // Активуємо інпут
+  userSelectedDate = null; // Очищаємо вибрану дату
+  startButton.disabled = true;
 }
